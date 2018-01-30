@@ -1,0 +1,140 @@
+D.
+1. What does git help do?
+    git help outputs a list of git commands and a short description of each.
+
+2. What does -ag cause git help to do?
+    It gives an extended list of commands without descriptions and a list of common Git guides with short descriptions.
+
+E.
+1. What are these commands doing?
+    These commands set your stored name and email for tagging commits.
+
+2. What is the purpose of --global?
+    --global sets the configurations for git in general rather than just the current repository.
+
+F.
+1. By default any file that starts with . is hidden. How do you display a hidden file?
+    ls -a
+
+2. Run this command to show the hidden files in the current directory. Are there any?
+    There are no hidden files but the current directory and parent directory are hidden.
+
+4. Check for hidden files again. What was created by git init?
+    .git was created.
+
+5. What do you think would happen if you delete .git?
+    The directory would no longer be a git repo.
+
+6. Using your observations to the previous questions, answer the following. You find an old project on your hard drive. You do not remember if it is a under version control. What could you look for to determine if the project is being managed using git?
+    We could use ls -a to show hidden files. If it is mananged using git, then there will be a .git file.
+
+G.
+1. What kind of information does git status report?
+    git status reports the current branch, commits, and any files that were changed since the last commit.
+
+2. What does git add names.txt do?
+    It stages the file names.txt to be committed.
+
+3. What does git commit -m "Add our names." do?
+    It makes a new commit with the staged files and gives it the commit message "Add our names."
+
+4. What does git add . do? What do you think . means?
+    This stages all files in the current repository. "." means the current directory.
+
+5. What does git commit (without -m) do?
+    This makes a new commit with the staged files and opens your default in-terminal text editor so you can write a commit message.
+
+6. If you want to write a more detailed commit message (which is good practice) what command would you use?
+    You would use "git commit" so you can use your text editor to write a detailed commit message.
+
+7. What does git log do?
+    git log shows a history of all commits.
+
+H.
+1. Below write each file name under the state that its changes are currently in. Compose a definition for each state.
+
+Staged
+names.txt
+Staged files have been added to the cache for the next commit.
+
+
+Unstaged
+movies.txt
+Unstaged files were committed at some point but are not in the cache for the next commit.
+
+
+Untracked
+books.txt
+Untracked files have never been committed in any iteration and are not currently staged for commit.
+
+
+
+2. If you run git commit what changes will be committed (don't do it)?
+    names.txt
+
+
+3. What command do you run to stage changes?
+    git add
+
+
+
+4. What command do you run to unstage changes?
+    git reset
+
+1. What does git diff display?
+    git diff displays the changes made for all tracked, unstaged files.
+
+
+2. What does git diff --cached display?
+    This displays the changes made for all staged files.
+
+
+3. Formulate a sequence of commands to unstage changes to names.txt, and stage the changes to movies.txt. Execute your commands and confirm they worked.
+    git reset
+    git add movies.txt
+
+
+4. Edit movies.txt, change any one of the movies, and save it. Then run git status. What do you observe? Explain what you think is going on.
+    movies.txt is both staged and unstaged: the version of movies.txt that was not changed is staged, while the version with the change is not staged.
+
+
+5. Delete names.txt. Then run git status. What do you observe? Explain what you think is going on.
+    There is an unstaged change: the deletion of names.txt. We believe deleting files is a change, like modifying a file, that must be committed.
+
+
+6. Rename movies.txt to last-movies. Run git status. Observe and explain.
+    git treats the renaming of a file like the deletion of the original file and creating the new file, which is untracked.
+
+
+7. Formulate a sequence of commands to stage all changes including the untracked file and commit (with any reasonable message you like). Execute them.
+    git add .
+    git commit -m "Changed ordering of movies, renamed file names, and deleted names.txt"
+
+
+8. In git vernacular, index, cache, and stage all refer to the same thing. What does it hold?
+    It holds all changes that will be included in the next commit.
+
+
+9. Why have a stage? Why not just commit all changes since the last commit?
+    If we did not have a stage, all changes would be committed every time. The stage allows you to select some changes to commit.
+
+I.
+1. What does git reset --soft ``"HEAD^"do?
+    This command removes the last commit and stages all the changes from that commit.
+
+
+1. What does git reset --hard ``"HEAD^"``do?
+    This command undoes all the changes from the last commit and completely clears the stage.
+
+
+2. What is the difference between --hard and --soft?
+    --soft keeps the changes from the last commit staged. Hard completely deletes the changes.
+
+
+3. What do you think HEAD means?
+    HEAD means the most recent commit.
+
+
+4. What do you think HEAD^ means?
+    HEAD^ means the commit before the most recent commit.
+
